@@ -16,5 +16,15 @@ public class Receiver {
 	public void receiveAgazin(Message receiveMessage) {
 		System.out.println(" @RabbitListener[AGAZIN] >>>>>>>>>>>>>>>>> " + receiveMessage);
 	}
+	
+	@RabbitListener(queues = "agazin-fanout")
+	public void receiveFanout(Message receiveMessage) {
+		System.out.println(" @RabbitListener[AGAZIN-FANOUT] >>>>>>>>>>>>>>>>> " + receiveMessage);
+	}
+	
+	@RabbitListener(queues = "agazin-direct")
+	public void receiveDirect(Message receiveMessage) {
+		System.out.println(" @RabbitListener[AGAZIN-DIRECT] >>>>>>>>>>>>>>>>> " + receiveMessage);
+	}
 
 }

@@ -31,4 +31,20 @@ public class SenderController {
 	public void sendMsgToAgazin(@RequestBody MsgRequest msgRequest) {
 		sender.sendMsgTo("agazin-exchange",msgRequest.msg);
 	}
+	
+	@PostMapping("/send/fanout")
+	public void sendMsgToFanout(@RequestBody MsgRequest msgRequest) {
+		sender.sendMsgTo("agazin-fanout-exchange",msgRequest.msg);
+	}
+	
+	@PostMapping("/send/direct")
+	public void sendMsgToDeract(@RequestBody MsgRequest msgRequest){
+		sender.sendMsgToDirect("agazin-direct-exchange",msgRequest.msg);
+	}
+	
+	@PostMapping("/send/node")
+	public void sendToNode() {
+		sender.sendToNode("hello form java");
+	}
+	
 }

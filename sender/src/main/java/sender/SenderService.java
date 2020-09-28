@@ -20,5 +20,17 @@ public class SenderService  {
 	public void sendMsgTo(String reciverName,String msg) {
 		rabbitTemplate.convertAndSend(reciverName, "foo.bar.baz", msg);
 	}
+	
+	public void sendMsgToFanout(String reciverName,String msg) {
+		rabbitTemplate.convertAndSend(reciverName, msg);
+	}
+	
+	public void sendMsgToDirect(String reciverName,String msg) {
+		rabbitTemplate.convertAndSend(reciverName,"agazin-direct", msg);
+	}
+	public void sendToNode(String msg) {
+//		rabbitTemplate.setExchange("logs");
+		rabbitTemplate.convertAndSend("logs","sss", msg);
+	}
 
 }
